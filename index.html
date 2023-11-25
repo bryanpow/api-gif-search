@@ -20,25 +20,29 @@
         </form>
     </div>
     <script>
-        
+
         const getResults = async () => {
+            //the API key that is needed when fetching
             const key = 'xmh6FcuRTrwiT2Ej8Gd2oITH32kfEPj1'
+            // where im getting the imput to give the API from
             const input = document.getElementById('search');
             let keyWords = input.value;
-
+            //Endpoint that includes my api key, keywords, and limit of 25 images
             const url =  `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${keyWords}&limit=25`
                 try {
                     const response = await fetch(url);
                     if (response.ok) {
                         const exists = Array.from(document.getElementsByClassName('gif'))
+                        // I want to make sure that when I make a new search, the previous items are removed
                         if (exists.length > 0) {
                             for (const gif of exists) {
                                 gif.remove();
                             };
                         };
+                        //putting the data from the API in json format
                         const jsonResponse = await response.json();
-                       
-                        console.log(jsonResponse);
+                        // console.log(jsonResponse);
+                        // using the data from the API to embed each gif to the page
                         jsonResponse.data.forEach(gif => {
                             const img = document.createElement('iframe');
                             img.classList.add('gif')
@@ -50,6 +54,7 @@
                     console.log(error)
                 }
          }
+         //handler for search button clicking
          const button = document.getElementById('submit');
         const submit = () => getResults()
     </script>
