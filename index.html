@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h3>GifFinder</h3>
+        <img id="power" src="https://www.urgentfury.com/uploads/monthly_2019_03/PoweredBy_640_Horizontal_Light-Backgrounds_With_Logo.gif.8dd1bb5cc66d68580a155d626f64a13e.gif" width="125px" height="30px">
+        </header>
+    <div id="discover">
+        <h1 id="bruh">Search for a Gif. Click to download.</h1>
+        <form action="type" id="form">
+            <label for="search"></label>
+            <input id="search" name="search" placeholder="Search for a Gif">
+            <button id='submit' type="button" onclick="getResults()">SEARCH</button>
+        </form>
+    </div>
+    <script>
+        
+        const getResults = async () => {
+            const key = 'xmh6FcuRTrwiT2Ej8Gd2oITH32kfEPj1'
+            const input = document.getElementById('search');
+            let keyWords = input.value;
+
+            const url =  `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${keyWords}&limit=25`
+                try {
+                    const response = await fetch(url);
+                    if (response.ok) {
+                        const exists = Array.from(document.getElementsByClassName('gif'))
+                        if (exists.length > 0) {
+                            for (const gif of exists) {
+                                gif.remove();
+                            };
+                        };
+                        const jsonResponse = await response.json();
+                       
+                        console.log(jsonResponse);
+                        jsonResponse.data.forEach(gif => {
+                            const img = document.createElement('iframe');
+                            img.classList.add('gif')
+                            img.src = gif.embed_url;
+                            document.body.appendChild(img)
+                        })
+                    }
+                } catch(error) {
+                    console.log(error)
+                }
+         }
+         const button = document.getElementById('submit');
+        const submit = () => getResults()
+    </script>
+</body>
+</html>

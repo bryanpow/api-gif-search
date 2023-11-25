@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight&family=Urbanist:wght@300&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    text-align: center;
+    background-color: white;
+    font-family: 'Inter Tight', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 20px;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+#bruh {
+    font-size: 50px;
+    font-weight: 400;
+}
+iframe {
+    border: 1px solid whitesmoke;
+    background-color: none;
+    transition: 0.1s;
+    object-fit: cover;
+    overflow: hidden;
+}
+iframe:hover {
+    transform: translateY(-3%);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    background-color: whitesmoke;
+    border: 1px solid black;
+}
+#power {
+    position:relative;
+    right: 40px
+}
+#form {
+    scale: 150%;
+    margin-bottom: 50px;
+}
+input {
+    background-color: whitesmoke;
+    border: 1px solid black;
+    height: 20px;
+    width: auto;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4)
+}
+#submit {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    border: 1px solid black;
+    height: 24px;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: whitesmoke;
+}
+
+#submit:hover{
+    background-color: black;
+    color: white;
+}
